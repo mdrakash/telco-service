@@ -47,7 +47,6 @@
       <form action="#" method="POST" id="edit_user_form">
         @csrf
         <input type="hidden" name="user_id" id="user_id">
-        <input type="hidden" name="user_avatar" id="user_avatar">
         <div class="modal-body p-4 bg-light">
           <div class="row">
             <div class="col-lg">

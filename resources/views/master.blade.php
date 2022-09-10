@@ -40,9 +40,9 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Outlets
                             </a>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{{ url('/outlet-view') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Show Outlest
+                                Show Outlets
                             </a>
                         </div>
                     </div>

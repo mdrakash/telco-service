@@ -7,7 +7,7 @@
         <div class="card shadow">
           <div class="card-header bg-danger d-flex justify-content-between align-items-center">
             <h3 class="text-light">Manage Outlets</h3>
-            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addOutletModal"><i
+            <button class="btn btn-light" id="addModal" data-bs-toggle="modal" data-bs-target="#addOutletModal"><i
                 class="bi-plus-circle me-2"></i>Add New Outlets</button>
           </div>
           <div class="card-body" id="show_all_outlets">
@@ -17,7 +17,7 @@
       </div>
     </div>
     @push('script')
-      @include('components.outlets.script')
       @include('components.outlets.map')
+      @include('components.outlets.script')
     @endpush
 @endsection

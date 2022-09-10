@@ -39,7 +39,7 @@ class OutletsController extends Controller
                 <td>' . $outlet->phone . '</td>
                 <td><img src="storage/images/' . $outlet->image . '" width="50" class="img-thumbnail rounded-circle"></td>
                 <td>
-                  <a href="#" id="' . $outlet->id . '" class="text-success mx-1 viewIcon" data-bs-toggle="modal" data-bs-target="#viewOutletModal"><i class="bi-pencil-square h4"></i></a>
+                  <a href="#" id="' . $outlet->id . '" class="text-success mx-1 viewIcon" data-bs-toggle="modal" data-bs-target="#viewOutletModal"><i class="bi bi-eye h4"></i></a>
                   <a href="#" id="' . $outlet->id . '" class="text-success mx-1 editIcon" data-bs-toggle="modal" data-bs-target="#editOutletModal"><i class="bi-pencil-square h4"></i></a>
                   <a href="#" id="' . $outlet->id . '" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></a>
                 </td>
@@ -100,7 +100,7 @@ class OutletsController extends Controller
     {
         try {
             $fileName='';
-            $outlet = Outlets::find($request->user_id);
+            $outlet = Outlets::find($request->id);
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $fileName = time() . '.' . $file->getClientOriginalExtension();

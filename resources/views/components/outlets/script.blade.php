@@ -8,7 +8,6 @@
         const fd = new FormData(this);
         fd.append('latitude', lat);
         fd.append('longitude', lng);
-        console.log(lat);
         $("#add_outlet_btn").text('Adding...');
         $.ajax({
           url: '{{ route('outlet.store') }}',
@@ -55,11 +54,12 @@
           },
           success: function(response) {
             $("#name").val(response.name);
-            $("#phone").val(response.email);
+            $("#phone").val(response.phone);
             $("#outlet_id").val(response.id);
             $("#image").html(
               `<img src="storage/images/${response.image}" width="100" class="img-fluid img-thumbnail">`);
             $("#outlet_image").val(response.image);
+            // $("#image_url").val(response.image);
           }
         });
       });
@@ -68,6 +68,8 @@
       $("#edit_outlet_form").submit(function(e) {
         e.preventDefault();
         const fd = new FormData(this);
+        fd.append('latitude', lat);
+        fd.append('longitude', lng);
         $("#edit_outlet_btn").text('Updating...');
         $.ajax({
           url: '{{ route('outlet.update') }}',
@@ -129,7 +131,7 @@
         })
       });
 
-      // fetch all employees ajax request
+      // fetch all Outlets ajax request
       fetchAllOutlets();
 
       function fetchAllOutlets() {
