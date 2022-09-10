@@ -36,7 +36,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Users
                             </a>
-                            <a class="nav-link" href="{{ url('/outlets') }}">
+                            <a class="nav-link" href="{{ url('outlet/') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Outlets
                             </a>

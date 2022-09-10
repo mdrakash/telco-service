@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
 class UserController extends Controller
 {
     // set index page view
     public function index()
     {
-        return view('components.users.user');
+        return view('components.users.index');
     }
 
     // handle fetch all users ajax request

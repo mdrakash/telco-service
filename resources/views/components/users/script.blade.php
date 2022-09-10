@@ -1,17 +1,12 @@
 <script>
-    let lat= 23.8103;
-    let lng= 90.4125;
     $(function() {
-      // add new Outlet ajax request
-      $("#add_outlet_form").submit(function(e) {
+      // add new User ajax request
+      $("#add_user_form").submit(function(e) {
         e.preventDefault();
         const fd = new FormData(this);
-        fd.append('latitude', lat);
-        fd.append('longitude', lng);
-        console.log(lat);
-        $("#add_outlet_btn").text('Adding...');
+        $("#add_user_btn").text('Adding...');
         $.ajax({
-          url: '{{ route('outlet.store') }}',
+          url: '{{ route('user.store') }}',
           method: 'post',
           data: fd,
           cache: false,
@@ -22,32 +17,24 @@
             if (response.status == 200) {
               Swal.fire(
                 'Added!',
-                'Outlet Added Successfully!',
+                'User Added Successfully!',
                 'success'
               )
-              fetchAllOutlets();
+              fetchAllUsers();
             }
-            $("#add_outlet_btn").text('Add User');
-            $("#add_outlet_form")[0].reset();
-            $("#addOutletModal").modal('hide');
-          },
-          error: function(error) {
-            $("#addOutletModal").modal('hide');
-            Swal.fire(
-                'Error!',
-                `${error.responseJSON.message}`,
-                'error'
-              )
+            $("#add_user_btn").text('Add User');
+            $("#add_user_form")[0].reset();
+            $("#addUserModal").modal('hide');
           }
         });
       });
 
-      // edit Outlet ajax request
+      // edit User ajax request
       $(document).on('click', '.editIcon', function(e) {
         e.preventDefault();
         let id = $(this).attr('id');
         $.ajax({
-          url: '{{ route('outlet.edit') }}',
+          url: '{{ route('user.edit') }}',
           method: 'get',
           data: {
             id: id,
@@ -55,22 +42,19 @@
           },
           success: function(response) {
             $("#name").val(response.name);
-            $("#phone").val(response.email);
-            $("#outlet_id").val(response.id);
-            $("#image").html(
-              `<img src="storage/images/${response.image}" width="100" class="img-fluid img-thumbnail">`);
-            $("#outlet_image").val(response.image);
+            $("#email").val(response.email);
+            $("#user_id").val(response.id);
           }
         });
       });
 
-      // update Outlet ajax request
-      $("#edit_outlet_form").submit(function(e) {
+      // update User ajax request
+      $("#edit_user_form").submit(function(e) {
         e.preventDefault();
         const fd = new FormData(this);
-        $("#edit_outlet_btn").text('Updating...');
+        $("#edit_user_btn").text('Updating...');
         $.ajax({
-          url: '{{ route('outlet.update') }}',
+          url: '{{ route('user.update') }}',
           method: 'post',
           data: fd,
           cache: false,
@@ -81,14 +65,14 @@
             if (response.status == 200) {
               Swal.fire(
                 'Updated!',
-                'Outlet Updated Successfully!',
+                'User Updated Successfully!',
                 'success'
               )
-              fetchAllOutlets();
+              fetchAllUsers();
             }
-            $("#edit_outlet_btn").text('Update Outlet');
-            $("#edit_outlet_form")[0].reset();
-            $("#editOutletModal").modal('hide');
+            $("#edit_user_btn").text('Update User');
+            $("#edit_user_form")[0].reset();
+            $("#editUserModal").modal('hide');
           }
         });
       });
@@ -109,7 +93,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: '{{ route('outlet.delete') }}',
+              url: '{{ route('user.delete') }}',
               method: 'delete',
               data: {
                 id: id,
@@ -122,7 +106,7 @@
                   'Your file has been deleted.',
                   'success'
                 )
-                fetchAllOutlets();
+                fetchAllUsers();
               }
             });
           }
@@ -130,14 +114,14 @@
       });
 
       // fetch all employees ajax request
-      fetchAllOutlets();
+      fetchAllUsers();
 
-      function fetchAllOutlets() {
+      function fetchAllUsers() {
         $.ajax({
-          url: '{{ route('outlet.fetchAll') }}',
+          url: '{{ route('user.fetchAll') }}',
           method: 'get',
           success: function(response) {
-            $("#show_all_outlets").html(response);
+            $("#show_all_users").html(response);
             $("table").DataTable({
               order: [0, 'desc']
             });

@@ -15,6 +15,11 @@ class CreateOutletsTable extends Migration
     {
         Schema::create('outlets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('phone');
+            $table->string('image');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }

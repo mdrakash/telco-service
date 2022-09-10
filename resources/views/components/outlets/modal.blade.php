@@ -1,5 +1,5 @@
-{{-- add new employee modal start --}}
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+{{-- add new Outlet modal start --}}
+<div class="modal fade" id="addOutletModal" tabindex="-1" aria-labelledby="exampleModalLabel"
   data-bs-backdrop="static" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -7,7 +7,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="#" method="POST" id="add_user_form">
+      <form action="#" method="POST" id="add_outlet_form" enctype="multipart/form-data">
         @csrf
         <div class="modal-body p-4 bg-light">
           <div class="row">
@@ -17,55 +17,69 @@
             </div>
           </div>
           <div class="my-2">
-            <label for="email">E-mail</label>
-            <input type="email" autocomplete="off" name="email" class="form-control" placeholder="E-mail" required>
+            <label for="phone">Phone</label>
+            <input type="text" autocomplete="off" name="phone" class="form-control" placeholder="Phone" required>
           </div>
           <div class="my-2">
-            <label for="email">Password</label>
-            <input type="password" autocomplete="off" name="password" class="form-control" placeholder="Password" required>
+            <label for="image">Select Image</label>
+            <input type="file" name="image" class="form-control" required>
+          </div>
+          <div class="my-2">
+            <label for="map">Select Outlet</label>
+            <div id="map"></div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" id="add_user_btn" class="btn btn-primary">Add User</button>
+          <button type="submit" id="add_outlet_btn" class="btn btn-primary">Add Outlet</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-{{-- add new employee modal end --}}
+{{-- add new Outlet modal end --}}
 
-{{-- edit employee modal start --}}
-<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+{{-- edit Outlet modal start --}}
+<div class="modal fade" id="editOutletModal" tabindex="-1" aria-labelledby="exampleModalLabel"
   data-bs-backdrop="static" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Outlet</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="#" method="POST" id="edit_user_form">
+      <form action="#" method="POST" id="edit_outlet_form" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="user_id" id="user_id">
-        <input type="hidden" name="user_avatar" id="user_avatar">
+        <input type="hidden" name="outlet_id" id="outlet_id">
+        <input type="hidden" name="outlet_image" id="outlet_image">
         <div class="modal-body p-4 bg-light">
           <div class="row">
             <div class="col-lg">
               <label for="name">Name</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
+              <input type="text" name="name" class="form-control" placeholder="Name" required>
             </div>
           </div>
           <div class="my-2">
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required>
+            <label for="phone">Phone</label>
+            <input type="text" autocomplete="off" name="phone" class="form-control" placeholder="Phone" required>
+          </div>
+          <div class="my-2">
+            <label for="image">Select Image</label>
+            <input type="file" name="image" class="form-control" required>
+          </div>
+          <div class="my-2">
+            <label for="map">Select Image</label>
+            <div id="map"></div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" id="edit_user_btn" class="btn btn-success">Update User</button>
+          <button type="submit" id="edit_outlet_btn" class="btn btn-success">Update Outlet</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-{{-- edit employee modal end --}}
+{{-- edit Outlet modal end --}}
+
+{{-- map style  --}}
